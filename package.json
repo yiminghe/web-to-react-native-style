@@ -1,0 +1,66 @@
+{
+  "name": "web-to-react-native-style",
+  "version": "0.1.0",
+  "description": "transform web style to react-native style",
+  "keywords": [
+    "style",
+    "react-native",
+    "web"
+  ],
+  "homepage": "http://github.com/yiminghe/web-to-react-native-style",
+  "author": "yiminghe@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yiminghe/web-to-react-native-style.git"
+  },
+  "files": [
+    "lib",
+    "es"
+  ],
+  "main": "./lib/index",
+  "module": "./es/index",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "transform": {
+      "\\.[tj]sx?$": "./node_modules/rc-tools/scripts/jestPreprocessor.js"
+    }
+  },
+  "bugs": {
+    "url": "http://github.com/yiminghe/web-to-react-native-style/issues"
+  },
+  "licenses": "MIT",
+  "config": {
+    "port": 8010
+  },
+  "scripts": {
+    "build": "rc-tools run build",
+    "gh-pages": "rc-tools run gh-pages",
+    "start": "rc-tools run server",
+    "pub": "rc-tools run pub --babel-runtime",
+    "lint": "rc-tools run lint",
+    "compile": "rc-tools run compile",
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.1",
+    "jest": "20.x",
+    "pre-commit": "1.x",
+    "rc-tools": "6.x"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "babel-runtime": "6.x"
+  }
+}

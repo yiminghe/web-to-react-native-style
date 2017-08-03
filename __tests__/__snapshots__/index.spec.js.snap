@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`web-to-react-native-style support background 1`] = `
+Object {
+  "backgroundColor": "#fff",
+}
+`;
+
+exports[`web-to-react-native-style support border 1`] = `
+Object {
+  "borderColor": "red",
+  "borderStyle": "solid",
+  "borderWidth": 10,
+}
+`;
+
+exports[`web-to-react-native-style support box-shadow 1`] = `
+Object {
+  "shadowColor": "black;",
+  "shadowOffset": Object {
+    "height": 5,
+    "width": 10,
+  },
+  "shadowOpacity": 1,
+  "shadowRadius": 5,
+}
+`;
+
+exports[`web-to-react-native-style support flex 1`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`web-to-react-native-style support font-family 1`] = `
+Object {
+  "fontFamily": "lucida grande",
+}
+`;
+
+exports[`web-to-react-native-style support margin 1`] = `
+Object {
+  "marginBottom": 10,
+  "marginLeft": 4,
+  "marginRight": 4,
+  "marginTop": 10,
+}
+`;
+
+exports[`web-to-react-native-style support padding 1`] = `
+Object {
+  "paddingBottom": 10,
+  "paddingLeft": 4,
+  "paddingRight": 4,
+  "paddingTop": 10,
+}
+`;
+
+exports[`web-to-react-native-style support text-shadow 1`] = `
+Object {
+  "textShadowColor": "black;",
+  "textShadowOffset": Object {
+    "height": 5,
+    "width": 10,
+  },
+  "textShadowRadius": 5,
+}
+`;
+
+exports[`web-to-react-native-style support transform 1`] = `
+Object {
+  "transform": Array [
+    Object {
+      "translateX": 12,
+    },
+    Object {
+      "translateY": "50%",
+    },
+    Object {
+      "scaleX": 2,
+    },
+    Object {
+      "scaleY": 0.5,
+    },
+    Object {
+      "rotateZ": "10deg",
+    },
+  ],
+}
+`;
