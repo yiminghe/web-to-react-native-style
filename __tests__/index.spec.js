@@ -9,6 +9,10 @@ describe('web-to-react-native-style', () => {
     expect(transform('margin', '10px 4px')).toMatchSnapshot();
   });
 
+  it('support font-weight', () => {
+    expect(transform('font-weight', '10')).toMatchSnapshot();
+  });
+
   it('support border', () => {
     expect(transform('border', '10px solid red')).toMatchSnapshot();
   });

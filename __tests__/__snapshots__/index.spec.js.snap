@@ -39,6 +39,12 @@ Object {
 }
 `;
 
+exports[`web-to-react-native-style support font-weight 1`] = `
+Object {
+  "fontWeight": "10",
+}
+`;
+
 exports[`web-to-react-native-style support margin 1`] = `
 Object {
   "marginBottom": 10,
