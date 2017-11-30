@@ -1,5 +1,3 @@
-import { endsWith } from '../utils';
-
 const BORDER_STYLE_ENUM = {
   none: 1,
   hidden: 1,
@@ -21,7 +19,11 @@ const VALID_BORDER_STYLE_ENUM = {
 
 const DEFAULT_BORDER_STYLE = 'solid';
 
-export default function border(name, value, { warning, lengthProcessor }) {
+export default function border(name, value, {
+  warning,
+  lengthUnitReg,
+  lengthProcessor,
+}) {
   let processed;
   ['border', 'borderTop', 'borderLeft', 'borderRight', 'borderBottom'].forEach((cssName) => {
     // react-native does not support border-bottom-style
@@ -33,7 +35,7 @@ export default function border(name, value, { warning, lengthProcessor }) {
       const ret: any = {};
       values.forEach((v) => {
         v = v.toLowerCase();
-        if (endsWith(v, 'px')) {
+        if (v.match(lengthUnitReg)) {
           ret[`${cssName}Width`] = lengthProcessor(name, v);
         } else if (BORDER_STYLE_ENUM[v]) {
           if (cssName === 'border') {

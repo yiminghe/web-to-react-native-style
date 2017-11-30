@@ -2,7 +2,16 @@ import { isNumber, camelCase, endsWith } from './utils';
 import transformers from './transformers/index';
 import filters from './filters/index';
 
-export function transform(_name, value, { lengthProcessor, style = {}, reasons } = {} as any) {
+const defaultLengthUnitReg = /(?:px)$/i;
+
+export function transform(_name,
+                          value,
+                          {
+                            lengthProcessor,
+                            lengthUnitReg = defaultLengthUnitReg,
+                            style = {},
+                            reasons,
+                          } = {} as any) {
   let name = camelCase(_name);
   const processLength = lengthProcessor || defaultLengthProcessor;
 
@@ -30,6 +39,7 @@ export function transform(_name, value, { lengthProcessor, style = {}, reasons }
 
   const params = {
     lengthProcessor: processLength,
+    lengthUnitReg,
     warning,
     style,
   };
