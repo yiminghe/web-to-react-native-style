@@ -1,33 +1,5 @@
 webpackJsonp([0],[
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["c"] = isNumber;
-/* harmony export (immutable) */ __webpack_exports__["a"] = camelCase;
-/* harmony export (immutable) */ __webpack_exports__["b"] = endsWith;
-/* harmony export (immutable) */ __webpack_exports__["d"] = removeSpaceFromRgb;
-var numberReSnippet = '(?:NaN|-?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))';
-var matchOnlyNumberRe = new RegExp('^(' + numberReSnippet + ')$');
-function isNumber(str) {
-    return !!str.trim().match(matchOnlyNumberRe);
-}
-function camelCase(name) {
-    return name.replace(/-(\w)/g, function (_w, g) {
-        return g.toUpperCase();
-    });
-}
-function endsWith(str, suffix) {
-    return str && str.slice(0 - suffix.length) === suffix;
-}
-function removeSpaceFromRgb(value) {
-    return value.replace(/\([^)]+\)/, function (m) {
-        return m.replace(/\s+/g, '');
-    });
-}
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55,6 +27,34 @@ exports.default = function (obj, key, value) {
 
   return obj;
 };
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["c"] = isNumber;
+/* harmony export (immutable) */ __webpack_exports__["a"] = camelCase;
+/* harmony export (immutable) */ __webpack_exports__["b"] = endsWith;
+/* harmony export (immutable) */ __webpack_exports__["d"] = removeSpaceFromRgb;
+var numberReSnippet = '(?:NaN|-?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))';
+var matchOnlyNumberRe = new RegExp('^(' + numberReSnippet + ')$');
+function isNumber(str) {
+    return !!str.trim().match(matchOnlyNumberRe);
+}
+function camelCase(name) {
+    return name.replace(/-(\w)/g, function (_w, g) {
+        return g.toUpperCase();
+    });
+}
+function endsWith(str, suffix) {
+    return str && str.slice(0 - suffix.length) === suffix;
+}
+function removeSpaceFromRgb(value) {
+    return value.replace(/\([^)]+\)/, function (m) {
+        return m.replace(/\s+/g, '');
+    });
+}
 
 /***/ }),
 /* 2 */
@@ -139,8 +139,6 @@ console.log(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__src___["a" /* tra
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = border;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
-
 var BORDER_STYLE_ENUM = {
     none: 1,
     hidden: 1,
@@ -161,6 +159,7 @@ var VALID_BORDER_STYLE_ENUM = {
 var DEFAULT_BORDER_STYLE = 'solid';
 function border(name, value, _ref) {
     var warning = _ref.warning,
+        lengthUnitReg = _ref.lengthUnitReg,
         lengthProcessor = _ref.lengthProcessor;
 
     var processed = void 0;
@@ -176,7 +175,7 @@ function border(name, value, _ref) {
             var ret = {};
             values.forEach(function (v) {
                 v = v.toLowerCase();
-                if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* endsWith */])(v, 'px')) {
+                if (v.match(lengthUnitReg)) {
                     ret[cssName + 'Width'] = lengthProcessor(name, v);
                 } else if (BORDER_STYLE_ENUM[v]) {
                     if (cssName === 'border') {
@@ -238,7 +237,7 @@ function display(name, value, _ref) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = paddingMargin;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 
 function paddingMargin(name, value, _ref) {
@@ -291,7 +290,7 @@ function position(name, value) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = display;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 
 var ps = {
@@ -309,18 +308,21 @@ function display(name, value) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = transform;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__transformers_index__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__filters_index__ = __webpack_require__(11);
 
 
 
 
+var defaultLengthUnitReg = /(?:px)$/i;
 function transform(_name, value) {
     var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
         lengthProcessor = _ref.lengthProcessor,
+        _ref$lengthUnitReg = _ref.lengthUnitReg,
+        lengthUnitReg = _ref$lengthUnitReg === undefined ? defaultLengthUnitReg : _ref$lengthUnitReg,
         _ref$style = _ref.style,
         style = _ref$style === undefined ? {} : _ref$style,
         reasons = _ref.reasons;
@@ -349,6 +351,7 @@ function transform(_name, value) {
     }
     var params = {
         lengthProcessor: processLength,
+        lengthUnitReg: lengthUnitReg,
         warning: warning,
         style: style
     };
@@ -374,7 +377,7 @@ function transform(_name, value) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = transform;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(1);
 
 function transform(name, value, _ref) {
     var warning = _ref.warning;
@@ -401,7 +404,7 @@ function transform(name, value, _ref) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = transform;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(1);
 
 function transform(name, value, _ref) {
     var warning = _ref.warning,
@@ -454,7 +457,7 @@ function transform(name, value, _ref) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = transform;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 
 function transform(name, value, _ref) {
@@ -519,7 +522,7 @@ function textDecoration(_name, value) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = transform;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(1);
 
 function transform(name, value, _ref) {
     var lengthProcessor = _ref.lengthProcessor;
@@ -556,7 +559,7 @@ function transform(name, value, _ref) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = transform;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 
 var TRANSFORM_PARTS = {
