@@ -14,6 +14,15 @@ Object {
 }
 `;
 
+exports[`web-to-react-native-style support border-radius 1`] = `
+Object {
+  "borderBottomLeftRadius": 2,
+  "borderBottomRightRadius": 1,
+  "borderTopLeftRadius": 1,
+  "borderTopRightRadius": 2,
+}
+`;
+
 exports[`web-to-react-native-style support box-shadow 1`] = `
 Object {
   "shadowColor": "black;",
