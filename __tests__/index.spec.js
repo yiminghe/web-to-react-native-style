@@ -17,6 +17,10 @@ describe('web-to-react-native-style', () => {
     expect(transform('border', '10px solid red')).toMatchSnapshot();
   });
 
+  it('support border-radius', () => {
+    expect(transform('border-radius', '1px 2px')).toMatchSnapshot();
+  });
+
   it('support flex', () => {
     expect(transform('display', 'flex')).toMatchSnapshot();
   });
