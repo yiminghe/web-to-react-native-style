@@ -22,8 +22,12 @@ describe('web-to-react-native-style', () => {
   });
 
   it('support border-color', () => {
-    expect(transform('border-color', 'red #f015ca green')).toMatchSnapshot();
+    expect(transform('border-color', 'red #f015ca')).toMatchSnapshot();
   });
+
+  it('support border-width', () => {
+    expect(transform('border-width', '2px 5rpx')).toMatchSnapshot();
+  })
 
   it('support flex', () => {
     expect(transform('display', 'flex')).toMatchSnapshot();
