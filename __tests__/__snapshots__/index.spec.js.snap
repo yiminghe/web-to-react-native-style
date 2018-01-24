@@ -14,6 +14,15 @@ Object {
 }
 `;
 
+exports[`web-to-react-native-style support border-color 1`] = `
+Object {
+  "borderBottomColor": "green",
+  "borderLeftColor": "#f015ca",
+  "borderRightColor": "#f015ca",
+  "borderTopColor": "red",
+}
+`;
+
 exports[`web-to-react-native-style support border-radius 1`] = `
 Object {
   "borderBottomLeftRadius": 2,
