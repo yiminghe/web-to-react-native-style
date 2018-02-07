@@ -34,10 +34,10 @@ Object {
 
 exports[`web-to-react-native-style support border-width 1`] = `
 Object {
-  "borderBottomColor": "2px",
-  "borderLeftColor": "5rpx",
-  "borderRightColor": "5rpx",
-  "borderTopColor": "2px",
+  "borderBottomWidth": 2,
+  "borderLeftWidth": 5,
+  "borderRightWidth": 5,
+  "borderTopWidth": 2,
 }
 `;
 
