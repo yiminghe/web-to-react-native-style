@@ -1,6 +1,6 @@
 export default function borderColor(name, value) {
   let processed;
-  ['borderColor', 'borderRadius', 'borderWidth'].forEach( (cssName) => {
+  ['borderColor'].forEach( (cssName) => {
     // reference: https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color
     if (name === cssName) {
       const values = value.split(/\s+/).filter( s => !!s.trim() );
