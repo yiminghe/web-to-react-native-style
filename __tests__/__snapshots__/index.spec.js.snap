@@ -43,6 +43,7 @@ Object {
 
 exports[`web-to-react-native-style support box-shadow 1`] = `
 Object {
+  "overflow": "visible",
   "shadowColor": "black;",
   "shadowOffset": Object {
     "height": 5,

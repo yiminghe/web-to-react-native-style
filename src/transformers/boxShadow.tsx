@@ -29,6 +29,7 @@ export default function transform(name, value, { warning, lengthProcessor }) {
     const processed: any = {
       shadowOffset,
       shadowOpacity: 1,
+      overflow: 'visible',
     };
 
     if (shadowColor) {
