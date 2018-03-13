@@ -9,6 +9,10 @@ export default function transform(name, value, { warning }) {
       return {
         backgroundColor: p,
       };
+    } else if(p.indexOf('gradient') != -1) {
+      return {
+        backgroundImage: "url('/" + value + "')"
+      };
     }
   }
   warning(name, value);
