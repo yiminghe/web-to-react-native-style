@@ -29,10 +29,6 @@ describe('web-to-react-native-style', () => {
     expect(transform('border-width', '2px 5rpx')).toMatchSnapshot();
   })
 
-  it('support flex', () => {
-    expect(transform('display', 'flex')).toMatchSnapshot();
-  });
-
   it('support background', () => {
     expect(transform('background', '#fff')).toMatchSnapshot();
   });
