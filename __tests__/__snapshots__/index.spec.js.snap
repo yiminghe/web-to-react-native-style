@@ -54,13 +54,6 @@ Object {
 }
 `;
 
-exports[`web-to-react-native-style support flex 1`] = `
-Object {
-  "flexDirection": "row",
-  "flexWrap": "wrap",
-}
-`;
-
 exports[`web-to-react-native-style support font-family 1`] = `
 Object {
   "fontFamily": "lucida grande",
