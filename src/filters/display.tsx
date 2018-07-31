@@ -4,9 +4,6 @@ export default function display(name, value, { style }) {
     if (!style['flex-direction']) {
       all.flexDirection = 'row';
     }
-    if (!style['flex-wrap']) {
-      all.flexWrap = 'nowrap';
-    }
     return all;
   }
 }
