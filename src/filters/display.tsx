@@ -5,7 +5,7 @@ export default function display(name, value, { style }) {
       all.flexDirection = 'row';
     }
     if (!style['flex-wrap']) {
-      all.flexWrap = 'wrap';
+      all.flexWrap = 'nowrap';
     }
     return all;
   }

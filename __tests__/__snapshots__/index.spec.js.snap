@@ -54,10 +54,31 @@ Object {
 }
 `;
 
-exports[`web-to-react-native-style support flex 1`] = `
+exports[`web-to-react-native-style support display flex 1`] = `
 Object {
   "flexDirection": "row",
-  "flexWrap": "wrap",
+  "flexWrap": "nowrap",
+}
+`;
+
+exports[`web-to-react-native-style support flex 1`] = `
+Object {
+  "flex": 2,
+}
+`;
+
+exports[`web-to-react-native-style support flex 2`] = `
+Object {
+  "flexGrow": 1,
+  "flexShrink": 2,
+}
+`;
+
+exports[`web-to-react-native-style support flex 3`] = `
+Object {
+  "flexBasis": 2,
+  "flexGrow": 1,
+  "flexShrink": 0,
 }
 `;
 

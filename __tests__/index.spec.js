@@ -29,7 +29,7 @@ describe('web-to-react-native-style', () => {
     expect(transform('border-width', '2px 5rpx')).toMatchSnapshot();
   })
 
-  it('support flex', () => {
+  it('support display flex', () => {
     expect(transform('display', 'flex')).toMatchSnapshot();
   });
 
@@ -51,5 +51,11 @@ describe('web-to-react-native-style', () => {
 
   it('support transform', () => {
     expect(transform('transform', `translate(12px, 50%) scale(2, 0.5) rotate(10deg)`)).toMatchSnapshot();
+  });
+
+  it('support flex', () => {
+    expect(transform('flex', '2')).toMatchSnapshot();
+    expect(transform('flex', '1 2')).toMatchSnapshot();
+    expect(transform('flex', '1 0 2')).toMatchSnapshot();
   });
 });

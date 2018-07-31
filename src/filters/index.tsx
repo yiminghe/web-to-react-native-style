@@ -6,6 +6,7 @@ import display from './display';
 import paddingMargin from './paddingMargin';
 import position from './position';
 import string from './string';
+import flex from './flex';
 export default [
   string,
   border,
@@ -15,4 +16,5 @@ export default [
   display,
   paddingMargin,
   position,
+  flex,
 ] as any;
