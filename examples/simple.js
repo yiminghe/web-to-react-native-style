@@ -327,9 +327,6 @@ function display(name, value, _ref) {
         if (!style['flex-direction']) {
             all.flexDirection = 'row';
         }
-        if (!style['flex-wrap']) {
-            all.flexWrap = 'nowrap';
-        }
         return all;
     }
 }
