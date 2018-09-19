@@ -1,4 +1,4 @@
-import { isNumber, camelCase, endsWith } from './utils';
+import { isNumber, camelCase, endsWith, assoc } from './utils';
 import transformers from './transformers/index';
 import filters from './filters/index';
 
@@ -45,9 +45,7 @@ export function transform(_name,
   };
 
   if (typeof value !== 'string') {
-    return {
-      [name]: value,
-    };
+    return assoc(name, value);
   }
 
   for (let i = 0; i < filters.length; i++) {
@@ -63,7 +61,5 @@ export function transform(_name,
 
   value = processLength(name, value);
 
-  return {
-    [name]: value,
-  };
+  return assoc(name, value);
 }
