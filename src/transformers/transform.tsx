@@ -1,3 +1,5 @@
+import { assoc } from '../utils';
+
 const TRANSFORM_PARTS = {
   perspective: 1,
   rotate: 1,
@@ -24,30 +26,18 @@ export default function transform(name, value, { warning, lengthProcessor }) {
       if (p === 'rotate') {
         p = 'rotateZ';
       }
-      ret.push({
-        [p]: lengthProcessor(p, v),
-      });
+      ret.push(assoc(p, lengthProcessor(p, v)));
     } else if (p === 'translate' || p === 'skew') {
       const ss = v.split(',').map(s => s.trim()).filter(s => !!s);
-      ret.push({
-        [`${p}X`]: lengthProcessor(p, ss[0]),
-      });
-      ret.push({
-        [`${p}Y`]: lengthProcessor(p, ss[1]),
-      });
+      ret.push(assoc(`${p}X`, lengthProcessor(p, ss[0])));
+      ret.push(assoc(`${p}Y`, lengthProcessor(p, ss[1])));
     } else if (p === 'scale') {
       const ss = v.split(',').map(s => s.trim()).filter(s => !!s);
-      ret.push({
-        [`${p}X`]: lengthProcessor(p, ss[0]),
-      });
-      ret.push({
-        [`${p}Y`]: lengthProcessor(p, ss[1] === undefined ? ss[0] : ss[1]),
-      });
+      ret.push(assoc(`${p}X`, lengthProcessor(p, ss[0])));
+      ret.push(assoc(`${p}Y`, lengthProcessor(p, ss[1] === undefined ? ss[0] : ss[1])));
     } else {
       warning(p, v);
     }
   }
-  return {
-    [name]: ret,
-  };
+  return assoc(name, ret);
 }

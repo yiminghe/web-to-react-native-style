@@ -16,3 +16,8 @@ export function endsWith(str, suffix) {
 export function removeSpaceFromRgb(value) {
   return value.replace(/\([^)]+\)/, m => m.replace(/\s+/g, ''));
 }
+
+export function assoc(prop, value, obj = {}) {
+  obj[prop] = value;
+  return obj;
+}

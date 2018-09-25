@@ -1,3 +1,5 @@
+import { assoc } from '../utils';
+
 export default function transform(name, value, { warning }) {
   const values = value.split(',').map((v) => {
     let ret = v.trim();
@@ -7,9 +9,7 @@ export default function transform(name, value, { warning }) {
     return ret;
   });
   if (values.length) {
-    return {
-      [name]: values[0],
-    };
+    return assoc(name, values[0], {});
   } else {
     warning(name, value);
     return false;

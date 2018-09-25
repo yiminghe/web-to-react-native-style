@@ -1,3 +1,5 @@
+import { assoc } from '../utils';
+
 export default function borderColor(name, value) {
   let processed;
   ['borderColor'].forEach( (cssName) => {
@@ -6,27 +8,27 @@ export default function borderColor(name, value) {
       const values = value.split(/\s+/).filter( s => !!s.trim() );
       if (values.length === 4) {
         processed = {
-          ['borderTopColor']: values[0],
-          ['borderRightColor']: values[1],
-          ['borderBottomColor']: values[2],
-          ['borderLeftColor']: values[3],
+          borderTopColor: values[0],
+          borderRightColor: values[1],
+          borderBottomColor: values[2],
+          borderLeftColor: values[3],
         };
       } else if (values.length === 3) {
         processed = {
-          ['borderTopColor']: values[0],
-          ['borderLeftColor']: values[1],
-          ['borderRightColor']: values[1],
-          ['borderBottomColor']: values[2],
+          borderTopColor: values[0],
+          borderLeftColor: values[1],
+          borderRightColor: values[1],
+          borderBottomColor: values[2],
         };
       } else if (values.length === 2) {
         processed = {
-          ['borderTopColor']: values[0],
-          ['borderBottomColor']: values[0],
-          ['borderLeftColor']: values[1],
-          ['borderRightColor']: values[1],
+          borderTopColor: values[0],
+          borderBottomColor: values[0],
+          borderLeftColor: values[1],
+          borderRightColor: values[1],
         };
       } else {
-        processed = { [name]: values[0] };
+        processed = assoc(name, values[0]);
       }
     }
   });
