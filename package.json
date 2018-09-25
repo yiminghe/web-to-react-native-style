@@ -1,6 +1,6 @@
 {
   "name": "web-to-react-native-style",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "transform web style to react-native style",
   "keywords": [
     "style",
@@ -45,7 +45,7 @@
     "build": "rc-tools run build",
     "gh-pages": "rc-tools run gh-pages",
     "start": "rc-tools run server",
-    "pub": "rc-tools run pub --babel-runtime",
+    "pub": "rc-tools run pub",
     "lint": "rc-tools run lint",
     "compile": "rc-tools run compile",
     "test": "jest",
