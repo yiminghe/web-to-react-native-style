@@ -1,7 +1,7 @@
-import { assoc } from '../utils';
+import { assoc } from "../utils";
 
 const ps = {
-  fontWeight: 1,
+  fontWeight: 1
 };
 
 export default function display(name, value) {

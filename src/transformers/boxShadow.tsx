@@ -1,4 +1,4 @@
-import { removeSpaceFromRgb, endsWith, isNumber } from '../utils';
+import { removeSpaceFromRgb, endsWith, isNumber } from "../utils";
 
 export default function transform(name, value, { warning, lengthProcessor }) {
   value = removeSpaceFromRgb(value);
@@ -8,8 +8,8 @@ export default function transform(name, value, { warning, lengthProcessor }) {
     let shadowOffset = {} as any;
     let shadowRadius;
     let shadowColor;
-    values.forEach((v) => {
-      if (endsWith(v, 'px') || isNumber(v)) {
+    values.forEach(v => {
+      if (endsWith(v, "px") || isNumber(v)) {
         // first num means width
         if (!shadowOffset.width) {
           shadowOffset.width = lengthProcessor(name, v);
@@ -22,14 +22,14 @@ export default function transform(name, value, { warning, lengthProcessor }) {
         } else if (!shadowRadius) {
           shadowRadius = lengthProcessor(name, v);
         }
-      } else if (v !== 'inset' && !shadowColor) {
+      } else if (v !== "inset" && !shadowColor) {
         shadowColor = v;
       }
     });
     const processed: any = {
       shadowOffset,
       shadowOpacity: 1,
-      overflow: 'visible',
+      overflow: "visible"
     };
 
     if (shadowColor) {

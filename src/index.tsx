@@ -1,29 +1,31 @@
-import { isNumber, camelCase, endsWith, assoc } from './utils';
-import transformers from './transformers/index';
-import filters from './filters/index';
+import { isNumber, camelCase, endsWith, assoc } from "./utils";
+import transformers from "./transformers/index";
+import filters from "./filters/index";
 
 const defaultLengthUnitReg = /(?:px)$/i;
 
-export function transform(_name,
-                          value,
-                          {
-                            lengthProcessor,
-                            lengthUnitReg = defaultLengthUnitReg,
-                            style = {},
-                            reasons,
-                          } = {} as any) {
+export function transform(
+  _name,
+  value,
+  {
+    lengthProcessor,
+    lengthUnitReg = defaultLengthUnitReg,
+    style = {},
+    reasons
+  } = {} as any
+) {
   let name = camelCase(_name);
   const processLength = lengthProcessor || defaultLengthProcessor;
 
   function defaultLengthProcessor(pname, pvalue) {
-    if (typeof pvalue === 'string') {
-      if (endsWith(pvalue, 'px')) {
+    if (typeof pvalue === "string") {
+      if (endsWith(pvalue, "px")) {
         return parseFloat(pvalue.slice(0, -2));
       }
       if (isNumber(pvalue)) {
         return parseFloat(pvalue);
       }
-      if (pvalue === 'auto') {
+      if (pvalue === "auto") {
         warning(pname, pvalue);
         return undefined;
       }
@@ -33,7 +35,11 @@ export function transform(_name,
 
   function warning(pname, pvalue, preason?) {
     if (reasons) {
-      reasons.push(`[style] '${pname}: ${pvalue}' is not supported${preason ? `: ${preason}` : ''}`);
+      reasons.push(
+        `[style] '${pname}: ${pvalue}' is not supported${
+          preason ? `: ${preason}` : ""
+        }`
+      );
     }
   }
 
@@ -41,10 +47,10 @@ export function transform(_name,
     lengthProcessor: processLength,
     lengthUnitReg,
     warning,
-    style,
+    style
   };
 
-  if (typeof value !== 'string') {
+  if (typeof value !== "string") {
     return assoc(name, value);
   }
 

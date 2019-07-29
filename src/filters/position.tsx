@@ -1,6 +1,6 @@
 export default function position(name, value) {
   // ignore
-  if (name === 'position' && value === 'relative') {
+  if (name === "position" && value === "relative") {
     return false;
   }
 }

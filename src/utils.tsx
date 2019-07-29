@@ -1,4 +1,5 @@
-const numberReSnippet = '(?:NaN|-?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))';
+const numberReSnippet =
+  "(?:NaN|-?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))";
 const matchOnlyNumberRe = new RegExp(`^(${numberReSnippet})$`);
 
 export function isNumber(str) {
@@ -14,7 +15,7 @@ export function endsWith(str, suffix) {
 }
 
 export function removeSpaceFromRgb(value) {
-  return value.replace(/\([^)]+\)/, m => m.replace(/\s+/g, ''));
+  return value.replace(/\([^)]+\)/, m => m.replace(/\s+/g, ""));
 }
 
 export function assoc(prop, value, obj = {}) {

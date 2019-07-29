@@ -1,4 +1,4 @@
-import { assoc } from '../utils';
+import { assoc } from "../utils";
 
 const TRANSFORM_PARTS = {
   perspective: 1,
@@ -11,7 +11,7 @@ const TRANSFORM_PARTS = {
   translateX: 1,
   translateY: 1,
   skewX: 1,
-  skewY: 1,
+  skewY: 1
 };
 
 export default function transform(name, value, { warning, lengthProcessor }) {
@@ -23,18 +23,26 @@ export default function transform(name, value, { warning, lengthProcessor }) {
     let p = match[1];
     const v = match[2];
     if (TRANSFORM_PARTS[p]) {
-      if (p === 'rotate') {
-        p = 'rotateZ';
+      if (p === "rotate") {
+        p = "rotateZ";
       }
       ret.push(assoc(p, lengthProcessor(p, v)));
-    } else if (p === 'translate' || p === 'skew') {
-      const ss = v.split(',').map(s => s.trim()).filter(s => !!s);
+    } else if (p === "translate" || p === "skew") {
+      const ss = v
+        .split(",")
+        .map(s => s.trim())
+        .filter(s => !!s);
       ret.push(assoc(`${p}X`, lengthProcessor(p, ss[0])));
       ret.push(assoc(`${p}Y`, lengthProcessor(p, ss[1])));
-    } else if (p === 'scale') {
-      const ss = v.split(',').map(s => s.trim()).filter(s => !!s);
+    } else if (p === "scale") {
+      const ss = v
+        .split(",")
+        .map(s => s.trim())
+        .filter(s => !!s);
       ret.push(assoc(`${p}X`, lengthProcessor(p, ss[0])));
-      ret.push(assoc(`${p}Y`, lengthProcessor(p, ss[1] === undefined ? ss[0] : ss[1])));
+      ret.push(
+        assoc(`${p}Y`, lengthProcessor(p, ss[1] === undefined ? ss[0] : ss[1]))
+      );
     } else {
       warning(p, v);
     }

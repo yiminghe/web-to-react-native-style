@@ -27,5 +27,4 @@ assets/**/*.css
 /lib
 /coverage
 yarn.lock
-/src/**/*.js
-/src/**/*.jsx
+/pkg/

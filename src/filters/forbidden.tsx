@@ -6,7 +6,7 @@ const forbiddenProperty = {
   textOverflow: 1,
   transition: 1,
   content: 1,
-  whiteSpace: 1,
+  whiteSpace: 1
 };
 
 export default function forbidden(name, value, { warning }) {

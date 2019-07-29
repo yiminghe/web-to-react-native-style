@@ -57,7 +57,6 @@ Object {
 exports[`web-to-react-native-style support display flex 1`] = `
 Object {
   "flexDirection": "row",
-  "flexWrap": "nowrap",
 }
 `;
 

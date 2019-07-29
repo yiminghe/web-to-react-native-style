@@ -8,47 +8,51 @@ const BORDER_STYLE_ENUM = {
   groove: 1,
   ridge: 1,
   inset: 1,
-  outset: 1,
+  outset: 1
 };
 
 const VALID_BORDER_STYLE_ENUM = {
   solid: 1,
   dotted: 1,
-  dashed: 1,
+  dashed: 1
 };
 
-const DEFAULT_BORDER_STYLE = 'solid';
+const DEFAULT_BORDER_STYLE = "solid";
 
-export default function border(name, value, {
-  warning,
-  lengthUnitReg,
-  lengthProcessor,
-}) {
+export default function border(
+  name,
+  value,
+  { warning, lengthUnitReg, lengthProcessor }
+) {
   let processed;
-  ['border', 'borderTop', 'borderLeft', 'borderRight', 'borderBottom'].forEach((cssName) => {
-    // react-native does not support border-bottom-style
-    if (name === `${cssName}Style` && name !== 'borderStyle') {
-      warning(name, value);
-      processed = false;
-    } else if (name === cssName) {
-      const values = value.split(/\s+/).filter(s => !!s.trim());
-      const ret: any = {};
-      values.forEach((v) => {
-        v = v.toLowerCase();
-        if (v.match(lengthUnitReg)) {
-          ret[`${cssName}Width`] = lengthProcessor(name, v);
-        } else if (BORDER_STYLE_ENUM[v]) {
-          if (cssName === 'border') {
-            ret[`${cssName}Style`] = VALID_BORDER_STYLE_ENUM[v] ? v : DEFAULT_BORDER_STYLE;
+  ["border", "borderTop", "borderLeft", "borderRight", "borderBottom"].forEach(
+    cssName => {
+      // react-native does not support border-bottom-style
+      if (name === `${cssName}Style` && name !== "borderStyle") {
+        warning(name, value);
+        processed = false;
+      } else if (name === cssName) {
+        const values = value.split(/\s+/).filter(s => !!s.trim());
+        const ret: any = {};
+        values.forEach(v => {
+          v = v.toLowerCase();
+          if (v.match(lengthUnitReg)) {
+            ret[`${cssName}Width`] = lengthProcessor(name, v);
+          } else if (BORDER_STYLE_ENUM[v]) {
+            if (cssName === "border") {
+              ret[`${cssName}Style`] = VALID_BORDER_STYLE_ENUM[v]
+                ? v
+                : DEFAULT_BORDER_STYLE;
+            } else {
+              warning(`${cssName}Style`, value);
+            }
           } else {
-            warning(`${cssName}Style`, value);
+            ret[`${cssName}Color`] = v;
           }
-        } else {
-          ret[`${cssName}Color`] = v;
-        }
-      });
-      processed = ret;
+        });
+        processed = ret;
+      }
     }
-  });
+  );
   return processed;
 }

@@ -1,6 +1,6 @@
 {
   "name": "web-to-react-native-style",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "transform web style to react-native style",
   "keywords": [
     "style",
@@ -13,54 +13,63 @@
     "type": "git",
     "url": "git@github.com:yiminghe/web-to-react-native-style.git"
   },
-  "files": [
-    "lib",
-    "es"
-  ],
-  "main": "./lib/index",
-  "module": "./es/index",
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__tests__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/*"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ],
-    "transform": {
-      "\\.[tj]sx?$": "./node_modules/rc-tools/scripts/jestPreprocessor.js"
-    }
+    ]
   },
   "bugs": {
     "url": "http://github.com/yiminghe/web-to-react-native-style/issues"
   },
-  "licenses": "MIT",
-  "config": {
-    "port": 8010
-  },
+  "license": "MIT",
   "scripts": {
-    "build": "rc-tools run build",
-    "gh-pages": "rc-tools run gh-pages",
-    "start": "rc-tools run server",
-    "pub": "rc-tools run pub",
-    "lint": "rc-tools run lint",
-    "compile": "rc-tools run compile",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write \"{src,__tests__}/**/*.{js,tsx}\"",
+    "pub": "npm run build && npm publish pkg",
+    "build": "pack build",
     "test": "jest",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "simple": "BABEL_ENV=test babel-node --extensions '.tsx' examples/simple.tsx",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "version": "npm run build"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@pika/plugin-build-node": "^0.5.1",
+    "@pika/plugin-build-web": "^0.5.1",
+    "@pika/plugin-standard-pkg": "^0.5.1",
+    "@pika/types": "^0.5.1",
+    "babel-jest": "^24.8.0",
     "coveralls": "^2.13.1",
-    "jest": "20.x",
-    "pre-commit": "1.x",
-    "rc-tools": "6.x"
+    "jest": "^24.8.0",
+    "lint-staged": "^7.2.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.11.1"
+  },
+  "lint-staged": {
+    "*.{tsx,js,jsx,ts}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "pre-commit": [
-    "lint"
-  ],
-  "dependencies": {
-    "babel-runtime": "6.x"
-  }
+    "lint-staged"
+  ]
 }
